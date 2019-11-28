@@ -12,6 +12,9 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     private let sectionInsets = UIEdgeInsets(top: 10.0, left: 2.0, bottom: 2.0, right: 2.0)
     
+     private let titles = ["1","2","3","4","5","6"]
+    
+    private let dates = ["5日","6日","7日","8日","9日","10日","11日"]
     //１行あたり
     private let itemsPerRow: CGFloat = 2
   
@@ -21,17 +24,31 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+       collectionview.delegate = self
+       collectionview.dataSource = self
+        
     }
     //要素数
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-          return 10
+          return 6
       }
       
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-          let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) //
-              cell.backgroundColor = .red  // セルの色
-          return cell
+      
+        let cell: UICollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
+        
+        let dateLabel = cell.contentView.viewWithTag(1) as! UILabel
+        dateLabel.text = dates[indexPath.row]
+        
+        let titleLabel = cell.contentView.viewWithTag(2) as! UILabel
+        titleLabel.text = titles[indexPath.row]
+        
+        cell.backgroundColor = .red  // セルの色
+        
+        
+        return cell
       }
+    
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
@@ -46,7 +63,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
        }
        // セルの行間の設定
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-           return 10.0
+           return 30.0
        }
     
 
