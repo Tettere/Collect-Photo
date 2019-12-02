@@ -10,11 +10,15 @@ import UIKit
 
 class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
     
-    private let sectionInsets = UIEdgeInsets(top: 10.0, left: 2.0, bottom: 2.0, right: 2.0)
     
-     private let titles = ["1","2","3","4","5","6"]
+   // private let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
     
-    private let dates = ["5日","6日","7日","8日","9日","10日","11日"]
+   //  private let titles = ["1","2","3","4","5","6"]
+    
+  //  private let dates = ["5日","6日","7日","8日","9日","10日","11日"]
+    
+    
+    var collectionlist = [String]()
     //１行あたり
     private let itemsPerRow: CGFloat = 2
   
@@ -30,7 +34,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     //要素数
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-          return 6
+        return collectionlist.count
       }
       
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -63,7 +67,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
        }
        // セルの行間の設定
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
-           return 30.0
+           return 10.0
        }
     
 
