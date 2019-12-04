@@ -8,6 +8,11 @@
 
 import UIKit
 
+protocol inputViewControllerDelegate: class {
+    func sendText1(text1: String)
+    func sendText2(text2: String)
+}
+
 class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, inputViewControllerDelegate{
    
     
@@ -16,11 +21,11 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     //タイトル入力
     var titles:String = ""
-    var TitleLabel = UILabel()
+    var titleLabel = UILabel()
     
     //日付入力
     var dates:String = ""
-    var DateLabel = UILabel()
+    var dateLabel = UILabel()
     
     //cellを格納
     var collectionlist = [CellData]()
@@ -37,6 +42,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
        collectionview.delegate = self
        collectionview.dataSource = self
         
+        
     }
     
     //override func viewDidAppear(_ animated: Bool) {
@@ -46,13 +52,25 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
      //  }
     
     
-    override func viewWillAppear(_ animated: Bool) {
-             super.viewWillAppear(animated)
+  //  override func viewWillAppear(_ animated: Bool) {
+   //          super.viewWillAppear(animated)
              //データを引っ張ってくる
-              GetData()
-              collectionview.reloadData()
+    //          GetData()
+      //        collectionview.reloadData()
              
-         }
+     //    }
+    
+   // override func viewWillAppear(_ animated: Bool) {
+     //   super.viewWillAppear(animated)
+
+      //  if let presented = self.presentedViewController {
+        //    if type(of: presented) = inputViewController.self {
+                //PopupViewControllerから戻ってきたときはrefresh()
+        //        self.GetData()
+        //        self.collectionview.reloadData()
+       //     }
+      //  }
+ //   }
     
     //要素数
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -64,17 +82,18 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
       
         let cell: UICollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
         
-        DateLabel = cell.contentView.viewWithTag(1) as! UILabel
-        DateLabel.text = collectionlist[indexPath.row].Date
+        dateLabel = cell.contentView.viewWithTag(1) as! UILabel
+        dateLabel.text = collectionlist[indexPath.row].Date
         
-        TitleLabel = cell.contentView.viewWithTag(2) as! UILabel
-        TitleLabel.text = collectionlist[indexPath.row].Title
+        titleLabel = cell.contentView.viewWithTag(2) as! UILabel
+        titleLabel.text = collectionlist[indexPath.row].Title
         
         cell.backgroundColor = .red  // セルの色
         
         
         return cell
       }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
            if let NextVC = segue.destination as? inputViewController {
@@ -85,12 +104,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
      func sendText1(text1: String) {
               titles = text1
-              
           }
        
      func sendText2(text2: String) {
               dates = text2
-           
        }
 
     
@@ -128,8 +145,5 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
  
 }
 
-protocol inputViewControllerDelegate: class {
-    func sendText1(text1: String)
-    func sendText2(text2: String)
-}
+
 

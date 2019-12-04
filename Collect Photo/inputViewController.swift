@@ -19,7 +19,7 @@ class inputViewController: UIViewController,UITextFieldDelegate {
     
     @IBOutlet weak var TextField: UITextField!
     //UIDatePickerを定義するための変数
-       var datePicker: UIDatePicker = UIDatePicker()
+    var datePicker: UIDatePicker = UIDatePicker()
     
     weak var delegate: inputViewControllerDelegate?
 
@@ -90,7 +90,10 @@ class inputViewController: UIViewController,UITextFieldDelegate {
         
         delegate?.sendText2(text2: datefield.text!)
         
+        
         self.navigationController?.popToRootViewController(animated: true)
+      
+        
             
     }
     
