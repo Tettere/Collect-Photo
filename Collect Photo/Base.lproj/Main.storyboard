@@ -66,7 +66,7 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="edit" id="4y3-v1-rni"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="3U2-vT-mD0">
                             <connections>
-                                <segue destination="ljd-yf-iXv" kind="show" id="KgJ-ej-7wC"/>
+                                <segue destination="ljd-yf-iXv" kind="show" id="Orc-90-f00"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -85,16 +85,61 @@
                     <view key="view" contentMode="scaleToFill" id="ZPK-KS-xpU">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lcV-HW-DlF">
+                                <rect key="frame" x="167" y="411" width="80" height="74"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
+                                <state key="normal" title="完了"/>
+                                <connections>
+                                    <action selector="OKButton:" destination="ljd-yf-iXv" eventType="touchUpInside" id="hm5-a2-vly"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="8文字まで" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="weJ-n8-Ep4">
+                                <rect key="frame" x="119" y="305" width="275" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ファイル名" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f9B-zB-Tk5">
+                                <rect key="frame" x="20" y="312" width="87" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="日付" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jnd-iS-oAy">
+                                <rect key="frame" x="46" y="230" width="35" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IWe-z7-mQb">
+                                <rect key="frame" x="119" y="225" width="275" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="GH7-Ge-aeY"/>
                     </view>
                     <navigationItem key="navigationItem" id="ApJ-xg-aoa">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="0vM-tX-tD9"/>
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="0vM-tX-tD9">
+                            <connections>
+                                <action selector="Cancel:" destination="ljd-yf-iXv" id="5g2-jT-5Uk"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="TextField" destination="weJ-n8-Ep4" id="Yrs-4z-IOu"/>
+                        <outlet property="datefield" destination="IWe-z7-mQb" id="mel-LE-LMB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7rh-6I-3uA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3422" y="99"/>
+            <point key="canvasLocation" x="3046" y="127"/>
         </scene>
         <!--Item-->
         <scene sceneID="G2J-xa-9EJ">
@@ -166,10 +211,10 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FT6-Z0-R9h" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2499" y="-473"/>
+            <point key="canvasLocation" x="3045" y="-625"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="247-tf-7jN"/>
+        <segue reference="Orc-90-f00"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -14,6 +14,7 @@
 		118F6B69238E2BC90037369A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 118F6B68238E2BC90037369A /* Assets.xcassets */; };
 		118F6B6C238E2BC90037369A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 118F6B6A238E2BC90037369A /* LaunchScreen.storyboard */; };
 		118F6B9423940CAB0037369A /* inputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118F6B9323940CAB0037369A /* inputViewController.swift */; };
+		118F6B96239756890037369A /* CellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118F6B95239756890037369A /* CellData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		118F6B6B238E2BC90037369A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		118F6B6D238E2BC90037369A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		118F6B9323940CAB0037369A /* inputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = inputViewController.swift; sourceTree = "<group>"; };
+		118F6B95239756890037369A /* CellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				118F6B63238E2BC50037369A /* ViewController.swift */,
 				118F6B65238E2BC50037369A /* Main.storyboard */,
 				118F6B9323940CAB0037369A /* inputViewController.swift */,
+				118F6B95239756890037369A /* CellData.swift */,
 				118F6B68238E2BC90037369A /* Assets.xcassets */,
 				118F6B6A238E2BC90037369A /* LaunchScreen.storyboard */,
 				118F6B6D238E2BC90037369A /* Info.plist */,
@@ -144,6 +147,7 @@
 				118F6B64238E2BC50037369A /* ViewController.swift in Sources */,
 				118F6B60238E2BC50037369A /* AppDelegate.swift in Sources */,
 				118F6B62238E2BC50037369A /* SceneDelegate.swift in Sources */,
+				118F6B96239756890037369A /* CellData.swift in Sources */,
 				118F6B9423940CAB0037369A /* inputViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

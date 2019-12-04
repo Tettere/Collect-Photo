@@ -8,17 +8,23 @@
 
 import UIKit
 
-class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout{
+class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, inputViewControllerDelegate{
+   
     
     
-   // private let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
+   private let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
     
-   //  private let titles = ["1","2","3","4","5","6"]
+    //タイトル入力
+    var titles:String = ""
+    var TitleLabel = UILabel()
     
-  //  private let dates = ["5日","6日","7日","8日","9日","10日","11日"]
+    //日付入力
+    var dates:String = ""
+    var DateLabel = UILabel()
     
+    //cellを格納
+    var collectionlist = [CellData]()
     
-    var collectionlist = [String]()
     //１行あたり
     private let itemsPerRow: CGFloat = 2
   
@@ -32,26 +38,74 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
        collectionview.dataSource = self
         
     }
+    
+    //override func viewDidAppear(_ animated: Bool) {
+    //       super.viewDidAppear(animated)
+
+          
+     //  }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+             super.viewWillAppear(animated)
+             //データを引っ張ってくる
+              GetData()
+              collectionview.reloadData()
+             
+         }
+    
     //要素数
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return collectionlist.count
       }
       
+    //セルを構築
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
       
         let cell: UICollectionViewCell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
         
-        let dateLabel = cell.contentView.viewWithTag(1) as! UILabel
-        dateLabel.text = dates[indexPath.row]
+        DateLabel = cell.contentView.viewWithTag(1) as! UILabel
+        DateLabel.text = collectionlist[indexPath.row].Date
         
-        let titleLabel = cell.contentView.viewWithTag(2) as! UILabel
-        titleLabel.text = titles[indexPath.row]
+        TitleLabel = cell.contentView.viewWithTag(2) as! UILabel
+        TitleLabel.text = collectionlist[indexPath.row].Title
         
         cell.backgroundColor = .red  // セルの色
         
         
         return cell
       }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+           if let NextVC = segue.destination as? inputViewController {
+               NextVC.delegate = self
+           }
+       }
+    
+    
+     func sendText1(text1: String) {
+              titles = text1
+              
+          }
+       
+     func sendText2(text2: String) {
+              dates = text2
+           
+       }
+
+    
+    func GetData(){
+        let name = titles
+        let date = dates
+        let celldata = CellData()
+        
+        celldata.Date = date
+        celldata.Title = name
+        self.collectionlist.append(celldata)
+        self.titles.removeAll()
+        self.dates.removeAll()
+        self.collectionview.reloadData()
+    }
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -70,7 +124,12 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
            return 10.0
        }
     
+    
+ 
+}
 
-
+protocol inputViewControllerDelegate: class {
+    func sendText1(text1: String)
+    func sendText2(text2: String)
 }
 
