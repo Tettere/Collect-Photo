@@ -8,12 +8,12 @@
 
 import UIKit
 
-protocol inputViewControllerDelegate: class {
-    func sendText1(text1: String)
-    func sendText2(text2: String)
-}
+//protocol inputViewControllerDelegate: class {
+ //   func sendText1(text1: String)
+ //   func sendText2(text2: String)/
+//}
 
-class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, inputViewControllerDelegate{
+class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout,GetDataprotocol {
    
     
     
@@ -97,7 +97,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
            if let NextVC = segue.destination as? inputViewController {
-               NextVC.delegate = self
+            NextVC.delegate = self as? GetDataprotocol
            }
        }
     

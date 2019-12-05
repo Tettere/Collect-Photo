@@ -9,6 +9,12 @@
 
 import UIKit
 
+protocol GetDataprotocol {
+    func GetData()
+    func sendText1(text1: String)
+    func sendText2(text2: String)
+}
+
 class inputViewController: UIViewController,UITextFieldDelegate {
     
     
@@ -21,7 +27,9 @@ class inputViewController: UIViewController,UITextFieldDelegate {
     //UIDatePickerを定義するための変数
     var datePicker: UIDatePicker = UIDatePicker()
     
-    weak var delegate: inputViewControllerDelegate?
+    var delegate: GetDataprotocol?
+    
+   // var delegate: inputViewControllerDelegate?
 
     
     override func viewDidLoad() {
@@ -90,8 +98,10 @@ class inputViewController: UIViewController,UITextFieldDelegate {
         
         delegate?.sendText2(text2: datefield.text!)
         
+        delegate?.GetData()
         
-        self.navigationController?.popToRootViewController(animated: true)
+        
+       self.navigationController?.popToRootViewController(animated: true)
       
         
             
