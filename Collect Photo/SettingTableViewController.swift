@@ -9,10 +9,6 @@
 import UIKit
 
 class SettingTableViewController: UITableViewController {
-
-   
-    
-    
     
     
     override func viewDidLoad() {
@@ -34,7 +30,7 @@ class SettingTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        // それぞれのセクション毎に何行のセルが
+        // セクション毎に何行
            switch section {
            case 0: // 「設定」のセクション
              return 2

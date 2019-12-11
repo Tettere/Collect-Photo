@@ -11,29 +11,25 @@ import UIKit
 class MemberListTableViewController: UITableViewController {
     
     // アイテムの型
-    class Item {
-        var title : String
-        var color: Bool = false
+  //  class Item {
+  //      var title : String
+   //     var color: Bool = false
 
-        init(title: String) {
-            self.title = title
-        }
-    }
+   //     init(title: String) {
+    //        self.title = title
+    //    }
+  //  }
 
-    var itemArray: [Item] = []
     
-    
+    var itemArray: [String] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        /*
         let userDefaults = UserDefaults.standard
-        if let storedMemberList = userDefaults.array(forKey: "itemArray") as? [Item] {
+        if let storedMemberList = userDefaults.array(forKey: "itemArray") as? [String] {
         itemArray.append(contentsOf: storedMemberList)
         }
-         */
-        
-        
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -62,22 +58,16 @@ class MemberListTableViewController: UITableViewController {
 
              let action = UIAlertAction(title: "リストに追加", style: .default) { (action) in
                  // 「リストに追加」を押された時に実行される処理
-                 let newItem: Item = Item(title: textField.text!)
+                 let newItem: String = String(textField.text!)
 
                  // アイテム追加処理
                  self.itemArray.append(newItem)
                  self.tableView.reloadData()
-               
-                
-           /*
+           
                 
             let userDefaults = UserDefaults.standard
                 userDefaults.set(self.itemArray, forKey: "itemArray")
                 userDefaults.synchronize()
-                */
-                
-                
-                
              }
 
              alert.addTextField { (alertTextField) in
@@ -94,9 +84,8 @@ class MemberListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
             let item = itemArray[indexPath.row]
-            cell.textLabel?.text = item.title
+            cell.textLabel?.text = item
             return cell
-    
     }
     
    //アイテム削除機能
