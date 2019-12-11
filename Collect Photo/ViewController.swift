@@ -60,7 +60,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
        //     }
       //  }
  //   }
-    
     //要素数
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return collectionlist.count
@@ -81,8 +80,6 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         return cell
       }
-    
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
            if let NextVC = segue.destination as? inputViewController {
             NextVC.delegate = self
