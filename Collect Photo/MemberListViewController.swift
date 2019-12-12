@@ -10,9 +10,16 @@ import UIKit
 
 class MemberListViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,GetMemberprotocol{
     
-    var itemArray: [String] = []
+    @IBOutlet weak var ColorLabel: UILabel!
+    
+    var itemArray = [MemberData]()
     
     var members:String = ""
+    
+    var colorNumber:Int = 0
+    
+    var colorLabel = UILabel()
+    
     
     @IBOutlet weak var tableview: UITableView!
     
@@ -28,8 +35,6 @@ class MemberListViewController: UIViewController,UITableViewDelegate,UITableView
               }
         */
     }
- 
-    
    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
        if let NextVC = segue.destination as? InputMemberViewController {
            NextVC.delegate = self
@@ -41,10 +46,21 @@ class MemberListViewController: UIViewController,UITableViewDelegate,UITableView
             members = text1
     }
     
+    func sendColor(color: Int){
+            colorNumber = color
+    }
+  /////ここまで
     
     func GetMember(){
         let name = members
-        self.itemArray.append(name)
+        let colorNum = colorNumber
+        let memberdata = MemberData()
+               
+        memberdata.Member = name
+        memberdata.Color = colorNum
+        
+        
+        self.itemArray.append(memberdata)
         self.members.removeAll()
         self.tableview.reloadData()
         
@@ -58,15 +74,34 @@ class MemberListViewController: UIViewController,UITableViewDelegate,UITableView
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            itemArray.count
+        itemArray.count
     }
        
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
-            let item = itemArray[indexPath.row]
-            cell.textLabel?.text = item
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
+        let item = itemArray[indexPath.row].Member
+        cell.textLabel?.text = item
+        
+        colorLabel = cell.contentView.viewWithTag(3) as! UILabel
+        
+        switch itemArray[indexPath.row].Color {
+        case 1:
+            colorLabel.backgroundColor = .red
+        case 2:
+            colorLabel.backgroundColor = .purple
+        case 3:
+            colorLabel.backgroundColor = .systemTeal
+        case 4:
+            colorLabel.backgroundColor = .green
+        case 5:
+            colorLabel.backgroundColor = .yellow
+        case 6:
+            colorLabel.backgroundColor = .black
+        default:
+            colorLabel.backgroundColor = .white
+        }
         
             return cell
     }

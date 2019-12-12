@@ -19,6 +19,7 @@
 		118F6B6C238E2BC90037369A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 118F6B6A238E2BC90037369A /* LaunchScreen.storyboard */; };
 		118F6B9423940CAB0037369A /* inputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118F6B9323940CAB0037369A /* inputViewController.swift */; };
 		118F6B96239756890037369A /* CellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118F6B95239756890037369A /* CellData.swift */; };
+		11B65D6F23A21BDB005B69D2 /* MemberData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B65D6E23A21BDB005B69D2 /* MemberData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		118F6B6D238E2BC90037369A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		118F6B9323940CAB0037369A /* inputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = inputViewController.swift; sourceTree = "<group>"; };
 		118F6B95239756890037369A /* CellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellData.swift; sourceTree = "<group>"; };
+		11B65D6E23A21BDB005B69D2 /* MemberData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 				118F6B65238E2BC50037369A /* Main.storyboard */,
 				112B9D4123A0A40B0099B2B8 /* MemberListViewController.swift */,
 				112B9D3F23A0A1D70099B2B8 /* InputMemberViewController.swift */,
+				11B65D6E23A21BDB005B69D2 /* MemberData.swift */,
 				118F6B68238E2BC90037369A /* Assets.xcassets */,
 				118F6B6A238E2BC90037369A /* LaunchScreen.storyboard */,
 				118F6B6D238E2BC90037369A /* Info.plist */,
@@ -157,6 +160,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				112B9D3C239E2A810099B2B8 /* SettingTableViewController.swift in Sources */,
+				11B65D6F23A21BDB005B69D2 /* MemberData.swift in Sources */,
 				112B9D4023A0A1D70099B2B8 /* InputMemberViewController.swift in Sources */,
 				112B9D3E239E34B30099B2B8 /* MemberListTableViewController.swift in Sources */,
 				118F6B64238E2BC50037369A /* ViewController.swift in Sources */,
