@@ -7,12 +7,15 @@
 //
 
 import UIKit
+
 protocol GetMemberprotocol {
-    func GetMember()
     func sendText1(text1: String)
+    func GetMember()
 }
 
 class InputMemberViewController: UIViewController,UITextFieldDelegate {
+    
+    
     
     
     @IBOutlet weak var TextField: UITextField!
@@ -32,13 +35,15 @@ class InputMemberViewController: UIViewController,UITextFieldDelegate {
        }
    
     @IBAction func AddMember(_ sender: Any) {
-        delegate?.sendText1(text1: TextField.text!)
-        delegate?.GetMember()
-        self.dismiss(animated: true, completion: nil)
+     
+         delegate?.sendText1(text1: TextField.text!)
+         delegate?.GetMember()
+         self.navigationController?.popViewController(animated: true)
+ 
     }
     
     @IBAction func Cancel(_ sender: Any) {
-       self.dismiss(animated: true, completion: nil)
+        self.navigationController?.popViewController(animated: true)
     }
     
     //キーボードを閉じる
