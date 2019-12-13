@@ -10,7 +10,6 @@ import UIKit
 
 class MemberListViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,GetMemberprotocol{
     
-    @IBOutlet weak var ColorLabel: UILabel!
     @IBOutlet weak var tableview: UITableView!
     
     //メンバーリスト

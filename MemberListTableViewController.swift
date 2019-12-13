@@ -9,16 +9,6 @@
 import UIKit
 
 class MemberListTableViewController: UITableViewController {
-    
-    // アイテムの型
-  //  class Item {
-  //      var title : String
-   //     var color: Bool = false
-
-   //     init(title: String) {
-    //        self.title = title
-    //    }
-  //  }
 
     
     var itemArray: [String] = []
@@ -37,26 +27,17 @@ class MemberListTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
-    // MARK: - Table view data source
-
-   // override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-    //    return itemArray.count
-   // }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return itemArray.count
     }
 
-    
-    
     @IBAction func addButton(_ sender: Any) {
         var textField = UITextField()
 
-             let alert = UIAlertController(title: "メンバーを追加", message: "", preferredStyle: .alert)
+             let alert = UIAlertController(title: "種類を追加", message: "", preferredStyle: .alert)
 
-             let action = UIAlertAction(title: "リストに追加", style: .default) { (action) in
+             let action = UIAlertAction(title: "種類に追加", style: .default) { (action) in
                  // 「リストに追加」を押された時に実行される処理
                  let newItem: String = String(textField.text!)
 
@@ -71,7 +52,7 @@ class MemberListTableViewController: UITableViewController {
              }
 
              alert.addTextField { (alertTextField) in
-                 alertTextField.placeholder = "名前"
+                 alertTextField.placeholder = "種類"
                  textField = alertTextField
              }
 
@@ -96,6 +77,10 @@ class MemberListTableViewController: UITableViewController {
         let indexPaths = [indexPath]
         tableView.deleteRows(at: indexPaths, with: .automatic)
         self.tableView.reloadData()
+        
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(self.itemArray, forKey: "itemArray")
+        userDefaults.synchronize()
 
     }
     
