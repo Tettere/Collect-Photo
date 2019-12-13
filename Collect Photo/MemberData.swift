@@ -8,13 +8,13 @@
 
 import Foundation
 
-class MemberData{
+class MemberData:NSObject,NSCoding{
     
     var Member:String = ""
     var Color:Int = 0
-  /*
+  
     override init() {
-      }
+    }
       
       // デシリアライズ処理（デコード処理とも呼ばれる）
     required init?(coder aDecoder: NSCoder) {
@@ -28,5 +28,5 @@ class MemberData{
           aCoder.encode(Member, forKey: "Member")
           aCoder.encode(Color, forKey: "Color")
       }
-   */
+   
 }

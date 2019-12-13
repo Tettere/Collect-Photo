@@ -27,21 +27,23 @@ class MemberListViewController: UIViewController,UITableViewDelegate,UITableView
       
         tableview.delegate = self
         tableview.dataSource = self
-      /*
+      
         let userDefaults = UserDefaults.standard
-              if let storedMemberList = userDefaults.array(forKey: "itemArray") as? [Data] {
-                itemArray.append(storedMemberList)
-              }
- */
+        if let storedData = userDefaults.object(forKey: "itemArray") as? Data {
+            if let unarchivedData = NSKeyedUnarchiver.unarchiveObject(with: storedData) as? [MemberData]{
+                itemArray.append(contentsOf: unarchivedData)
+            }
+        }
         
     }
-   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-       if let NextVC = segue.destination as? InputMemberViewController {
-           NextVC.delegate = self
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let NextVC = segue.destination as? InputMemberViewController {
+            NextVC.delegate = self
        }
 
     }
  
+    
     func sendText1(text1: String) {
             members = text1
     }
@@ -49,7 +51,6 @@ class MemberListViewController: UIViewController,UITableViewDelegate,UITableView
     func sendColor(color: Int){
             colorNumber = color
     }
-  /////ここまで
     
     func GetMember(){
         let name = members
@@ -64,12 +65,12 @@ class MemberListViewController: UIViewController,UITableViewDelegate,UITableView
         self.members.removeAll()
         self.tableview.reloadData()
         
-    /*
-         //UserDefaultsに保存
+    
+        //UserDefaultsに保存
         let userDefaults = UserDefaults.standard
-            userDefaults.set(self.itemArray, forKey: "itemArray")
-            userDefaults.synchronize()
- */
+        let archivedData = try! NSKeyedArchiver.archivedData(withRootObject: itemArray, requiringSecureCoding: false)
+        userDefaults.set(archivedData, forKey: "itemArray")
+        userDefaults.synchronize()
         
     }
     
@@ -83,11 +84,11 @@ class MemberListViewController: UIViewController,UITableViewDelegate,UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
         let item = itemArray[indexPath.row].Member
-
-        membersLabel = cell.contentView.viewWithTag(4) as! UILabel
-        membersLabel.text = item
         
         colorLabel = cell.contentView.viewWithTag(3) as! UILabel
+        
+        membersLabel = cell.contentView.viewWithTag(4) as! UILabel
+        membersLabel.text = item
         
         switch itemArray[indexPath.row].Color {
         case 1:
@@ -105,9 +106,7 @@ class MemberListViewController: UIViewController,UITableViewDelegate,UITableView
         default:
             colorLabel.backgroundColor = .white
         }
-        
             return cell
-        
     }
     
     
@@ -115,6 +114,11 @@ class MemberListViewController: UIViewController,UITableViewDelegate,UITableView
         itemArray.remove(at: indexPath.row)
         let indexPaths = [indexPath]
         tableView.deleteRows(at: indexPaths, with: .automatic)
+        
+        let userDefaults = UserDefaults.standard
+        let archivedData = try! NSKeyedArchiver.archivedData(withRootObject: itemArray, requiringSecureCoding: false)
+        userDefaults.set(archivedData, forKey: "itemArray")
+        userDefaults.synchronize()
         
        }
     
