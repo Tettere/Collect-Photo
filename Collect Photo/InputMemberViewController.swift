@@ -16,8 +16,12 @@ protocol GetMemberprotocol {
 
 class InputMemberViewController: UIViewController,UITextFieldDelegate {
     
+    
+    @IBOutlet weak var colorImage: UILabel!
+    
     var BtnColor:Int = 0
     
+   // var colorImgage = UILabel()
     
     @IBOutlet weak var TextField: UITextField!
     
@@ -55,18 +59,25 @@ class InputMemberViewController: UIViewController,UITextFieldDelegate {
         switch n.tag {
         case 1:
              BtnColor = 1
+             colorImage.backgroundColor = .red
         case 2:
              BtnColor = 2
+             colorImage.backgroundColor = .purple
         case 3:
              BtnColor = 3
+             colorImage.backgroundColor = .systemTeal
         case 4:
              BtnColor = 4
+             colorImage.backgroundColor = .green
         case 5:
              BtnColor = 5
+             colorImage.backgroundColor = .yellow
         case 6:
              BtnColor = 6
+             colorImage.backgroundColor = .black
         default:
              BtnColor = 0
+             colorImage.backgroundColor = .white
         }
         
     }

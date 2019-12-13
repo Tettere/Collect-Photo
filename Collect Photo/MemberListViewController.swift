@@ -15,9 +15,8 @@ class MemberListViewController: UIViewController,UITableViewDelegate,UITableView
     var itemArray = [MemberData]()
     
     var members:String = ""
-    
+    var membersLabel = UILabel()
     var colorNumber:Int = 0
-    
     var colorLabel = UILabel()
     
     
@@ -30,10 +29,11 @@ class MemberListViewController: UIViewController,UITableViewDelegate,UITableView
         tableview.dataSource = self
       /*
         let userDefaults = UserDefaults.standard
-              if let storedMemberList = userDefaults.array(forKey: "itemArray") as? [String] {
-              itemArray.append(contentsOf: storedMemberList)
+              if let storedMemberList = userDefaults.array(forKey: "itemArray") as? [Data] {
+                itemArray.append(storedMemberList)
               }
-        */
+ */
+        
     }
    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
        if let NextVC = segue.destination as? InputMemberViewController {
@@ -70,6 +70,7 @@ class MemberListViewController: UIViewController,UITableViewDelegate,UITableView
             userDefaults.set(self.itemArray, forKey: "itemArray")
             userDefaults.synchronize()
  */
+        
     }
     
     
@@ -82,7 +83,9 @@ class MemberListViewController: UIViewController,UITableViewDelegate,UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
         let item = itemArray[indexPath.row].Member
-        cell.textLabel?.text = item
+
+        membersLabel = cell.contentView.viewWithTag(4) as! UILabel
+        membersLabel.text = item
         
         colorLabel = cell.contentView.viewWithTag(3) as! UILabel
         
@@ -104,6 +107,7 @@ class MemberListViewController: UIViewController,UITableViewDelegate,UITableView
         }
         
             return cell
+        
     }
     
     
