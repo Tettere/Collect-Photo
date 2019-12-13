@@ -34,7 +34,7 @@ class InputMemberViewController: UIViewController,UITextFieldDelegate {
         
         TextField.delegate = self
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
        }
