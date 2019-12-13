@@ -121,7 +121,7 @@ class MemberListViewController: UIViewController,UITableViewDelegate,UITableView
         //消したら再度保存
         let userDefaults = UserDefaults.standard
         let archivedData = try! NSKeyedArchiver.archivedData(withRootObject: memberArray, requiringSecureCoding: false)
-        userDefaults.set(archivedData, forKey: "memberrray")
+        userDefaults.set(archivedData, forKey: "memberArray")
         userDefaults.synchronize()
         
        }
