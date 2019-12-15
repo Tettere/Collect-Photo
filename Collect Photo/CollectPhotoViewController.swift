@@ -16,10 +16,12 @@ class CollectPhotoViewController: UIViewController {
     @IBOutlet weak var navi: UINavigationItem!
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
          //print(name)
         // Do any additional setup after loading the view.
         self.navi.title = name
+        
     }
     
 

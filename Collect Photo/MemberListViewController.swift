@@ -33,29 +33,38 @@ class MemberListViewController: UIViewController,UITableViewDelegate,UITableView
         let userDefaults = UserDefaults.standard
         if let storedData = userDefaults.object(forKey: "memberArray") as? Data {
             if let unarchivedData = NSKeyedUnarchiver.unarchiveObject(with: storedData) as? [MemberData]{
+                
                 memberArray.append(contentsOf: unarchivedData)
+                
             }
         }
         
     }
     
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if let NextVC = segue.destination as? InputMemberViewController {
             NextVC.delegate = self
+            
        }
+        
     }
  
     //メンバーの名前受け取り
     func sendText1(text1: String) {
+        
             members = text1
+        
     }
     //グループ分け用の色受け取り
     func sendColor(color: Int){
+        
             colorNumber = color
+        
     }
     //データの受け取り＆保存
     func GetMember(){
+        
         let name = members
         let colorNum = colorNumber
         let memberdata = MemberData()
@@ -78,12 +87,16 @@ class MemberListViewController: UIViewController,UITableViewDelegate,UITableView
     
     //メンバー(cell)の数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         memberArray.count
+        
     }
+    
        
     
     //cellの構築
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "ItemCell", for: indexPath)
         let item = memberArray[indexPath.row].Member
         
@@ -93,6 +106,7 @@ class MemberListViewController: UIViewController,UITableViewDelegate,UITableView
         membersLabel.text = item
         
         switch memberArray[indexPath.row].Color {
+            
         case 1:
             colorLabel.backgroundColor = .red
         case 2:
@@ -107,12 +121,16 @@ class MemberListViewController: UIViewController,UITableViewDelegate,UITableView
             colorLabel.backgroundColor = .black
         default:
             colorLabel.backgroundColor = .white
+            
         }
+        
             return cell
+        
     }
 
     //cellの削除機能
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
         memberArray.remove(at: indexPath.row)
         let indexPaths = [indexPath]
         tableView.deleteRows(at: indexPaths, with: .automatic)
@@ -125,16 +143,4 @@ class MemberListViewController: UIViewController,UITableViewDelegate,UITableView
         
        }
     
-   
-    
-    /*
-     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -18,14 +18,18 @@ class MemberData:NSObject,NSCoding{
       
       // デシリアライズ処理（デコード処理）
     required init?(coder aDecoder: NSCoder) {
+        
         Member = aDecoder.decodeObject(forKey: "Member") as! String
         Color =  aDecoder.decodeInteger(forKey: "Color")
+        
     }
       
       // シリアライズ処理（エンコード処理）
     func encode(with aCoder: NSCoder) {
+        
         aCoder.encode(Member, forKey: "Member")
         aCoder.encode(Color, forKey: "Color")
+        
     }
    
 }

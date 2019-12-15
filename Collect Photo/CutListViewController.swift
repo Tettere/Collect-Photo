@@ -16,6 +16,7 @@ class CutListViewController: UIViewController,UITableViewDelegate,UITableViewDat
     var cutArray: [String] = []
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         tableView.delegate = self
@@ -57,19 +58,24 @@ class CutListViewController: UIViewController,UITableViewDelegate,UITableViewDat
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return cutArray.count
+        
     }
     
     //Cell構築
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "CutCell", for: indexPath)
         let item = cutArray[indexPath.row]
         cell.textLabel?.text = item
         return cell
+        
     }
       
      //アイテム削除機能
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
         cutArray.remove(at: indexPath.row)
         let indexPaths = [indexPath]
         tableView.deleteRows(at: indexPaths, with: .automatic)
@@ -78,6 +84,7 @@ class CutListViewController: UIViewController,UITableViewDelegate,UITableViewDat
         let userDefaults = UserDefaults.standard
         userDefaults.set(self.cutArray, forKey: "cutArray")
         userDefaults.synchronize()
+        
     }
     
 
