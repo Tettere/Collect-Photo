@@ -73,7 +73,7 @@
                     <connections>
                         <outlet property="collectionview" destination="xTu-8Z-uva" id="sF1-lx-PU1"/>
                         <segue destination="ljd-yf-iXv" kind="show" identifier="inputsegue" id="g2S-2V-aYV"/>
-                        <segue destination="fWq-GB-jIh" kind="show" identifier="collectphotosegue" id="hWL-VR-t1h"/>
+                        <segue destination="fWq-GB-jIh" kind="show" id="h10-Ss-tHg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -595,10 +595,10 @@
             </objects>
             <point key="canvasLocation" x="1048" y="1021"/>
         </scene>
-        <!--View Controller-->
+        <!--Collect Photo View Controller-->
         <scene sceneID="XxQ-XR-YEv">
             <objects>
-                <viewController id="fWq-GB-jIh" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="collectphotosegue" useStoryboardIdentifierAsRestorationIdentifier="YES" id="fWq-GB-jIh" customClass="CollectPhotoViewController" customModule="Collect_Photo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qA3-Sm-ggS">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -606,6 +606,9 @@
                         <viewLayoutGuide key="safeArea" id="CwY-N2-kKj"/>
                     </view>
                     <navigationItem key="navigationItem" id="kcZ-7r-Dx7"/>
+                    <connections>
+                        <outlet property="navi" destination="kcZ-7r-Dx7" id="lca-S2-rbX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wIp-kQ-HWW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

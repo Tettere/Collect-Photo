@@ -117,18 +117,18 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         return 10.0
     }
  //
-    //セルが押された時の処理
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-    let next2VC = storyboard?.instantiateViewController(identifier: "collectphotosegue") as! CollectPhotoViewController
-      // let next2VC = segue.destination as? CollectPhotoViewController
-    next2VC.name = collectionlist[indexPath.row].Title
-        //ここに遷移処理を書く
-    performSegue(withIdentifier: "collectphotosegue", sender: nil)
-        
-    //navigationController?.pushViewController(next2VC, animated: true)
-    }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let next2VC = storyboard?.instantiateViewController(withIdentifier: "collectphotosegue") as! CollectPhotoViewController
+        
+        next2VC.name = collectionlist[indexPath.row].Title
+        //print(next2VC.name)
+        navigationController?.pushViewController(next2VC, animated: true)
+               // SubViewController へ遷移するために Segue を呼び出す
+        //performSegue(withIdentifier: "collectphotosegue",sender: nil)
+           
+       }
  
 }
 

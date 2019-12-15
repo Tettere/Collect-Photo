@@ -12,13 +12,14 @@ class CollectPhotoViewController: UIViewController {
 
     var name = String()
     
-    @IBOutlet weak var navItem: UINavigationItem!
+    
+    @IBOutlet weak var navi: UINavigationItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+         //print(name)
         // Do any additional setup after loading the view.
-        navItem.title = name
+        self.navi.title = name
     }
     
 
