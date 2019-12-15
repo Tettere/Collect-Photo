@@ -66,17 +66,19 @@
                         <barButtonItem key="leftBarButtonItem" systemItem="edit" id="4y3-v1-rni"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="3U2-vT-mD0">
                             <connections>
-                                <segue destination="ljd-yf-iXv" kind="show" id="Orc-90-f00"/>
+                                <action selector="Toinput:" destination="BYZ-38-t0r" id="X17-3Z-D9n"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="collectionview" destination="xTu-8Z-uva" id="sF1-lx-PU1"/>
+                        <segue destination="ljd-yf-iXv" kind="show" identifier="inputsegue" id="g2S-2V-aYV"/>
+                        <segue destination="fWq-GB-jIh" kind="show" identifier="collectphotosegue" id="hWL-VR-t1h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1957.9710144927537" y="126.5625"/>
+            <point key="canvasLocation" x="1958" y="127"/>
         </scene>
         <!--Input View Controller-->
         <scene sceneID="Lqk-JO-EXe">
@@ -593,6 +595,22 @@
             </objects>
             <point key="canvasLocation" x="1048" y="1021"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="XxQ-XR-YEv">
+            <objects>
+                <viewController id="fWq-GB-jIh" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="qA3-Sm-ggS">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="CwY-N2-kKj"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="kcZ-7r-Dx7"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wIp-kQ-HWW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1958" y="1021"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="52a-Gg-bnr">
             <objects>
@@ -613,8 +631,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="uIB-Md-bgS"/>
-        <segue reference="tgD-Yh-fNk"/>
-        <segue reference="Orc-90-f00"/>
+        <segue reference="NDc-aA-631"/>
+        <segue reference="stg-3y-NLa"/>
+        <segue reference="g2S-2V-aYV"/>
     </inferredMetricsTieBreakers>
 </document>

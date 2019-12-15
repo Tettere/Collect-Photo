@@ -15,7 +15,7 @@ protocol GetMemberprotocol {
 }
 
 class InputMemberViewController: UIViewController,UITextFieldDelegate {
-    
+
     
     @IBOutlet weak var colorImage: UILabel!
     @IBOutlet weak var TextField: UITextField!
@@ -30,6 +30,7 @@ class InputMemberViewController: UIViewController,UITextFieldDelegate {
         TextField.delegate = self
     }
 
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -55,35 +56,36 @@ class InputMemberViewController: UIViewController,UITextFieldDelegate {
         let n:UIButton = sender as! UIButton
         
         switch n.tag {
-        case 1:
-             BtnColor = 1
-             colorImage.backgroundColor = .red
-        case 2:
-             BtnColor = 2
-             colorImage.backgroundColor = .purple
-        case 3:
-             BtnColor = 3
-             colorImage.backgroundColor = .systemTeal
-        case 4:
-             BtnColor = 4
-             colorImage.backgroundColor = .green
-        case 5:
-             BtnColor = 5
-             colorImage.backgroundColor = .yellow
-        case 6:
-             BtnColor = 6
-             colorImage.backgroundColor = .black
-        default:
-             BtnColor = 0
-             colorImage.backgroundColor = .white
+            case 1:
+                BtnColor = 1
+                colorImage.backgroundColor = .red
+            case 2:
+                BtnColor = 2
+                colorImage.backgroundColor = .purple
+            case 3:
+                BtnColor = 3
+                colorImage.backgroundColor = .systemTeal
+            case 4:
+                BtnColor = 4
+                colorImage.backgroundColor = .green
+            case 5:
+                BtnColor = 5
+                colorImage.backgroundColor = .yellow
+            case 6:
+                BtnColor = 6
+                colorImage.backgroundColor = .black
+            default:
+                BtnColor = 0
+                colorImage.backgroundColor = .white
         }
     }
     
+    
     //キーボードを閉じる
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-         TextField.resignFirstResponder()
-         return true
-     }
+        TextField.resignFirstResponder()
+        return true
+    }
 
 
 }
