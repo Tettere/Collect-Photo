@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import RealmSwift
+/*
 
 class MemberData:NSObject,NSCoding{
     
@@ -31,5 +33,15 @@ class MemberData:NSObject,NSCoding{
         aCoder.encode(Color, forKey: "Color")
         
     }
-   
+ 
+ }
+ */
+
+class MemberData: Object {
+    // 商品名
+    @objc dynamic var Member:String = ""
+    // 数量
+    @objc dynamic var Color:Int = 0
 }
+   
+

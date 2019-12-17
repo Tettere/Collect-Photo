@@ -7,13 +7,14 @@
 //
 
 import UIKit
+import RealmSwift
 
 class MemberListViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,GetMemberprotocol{
     
     @IBOutlet weak var tableview: UITableView!
     
     //メンバーリスト
-    var memberArray = [MemberData]()
+    var memberArray:Results<MemberData>!
        
     //メンバー変数
     var members:String = ""
@@ -28,7 +29,7 @@ class MemberListViewController: UIViewController,UITableViewDelegate,UITableView
       
         tableview.delegate = self
         tableview.dataSource = self
-      
+      /*
         //保存しているリストの読み込み処理
         let userDefaults = UserDefaults.standard
         if let storedData = userDefaults.object(forKey: "memberArray") as? Data {
@@ -37,9 +38,23 @@ class MemberListViewController: UIViewController,UITableViewDelegate,UITableView
                 memberArray.append(contentsOf: unarchivedData)
                 
             }
+ 
+        }*/
+        
+        do{
+            let realm = try Realm()
+            memberArray = realm.objects(MemberData.self)
+            }catch{
         }
         
     }
+    
+    // 画面が表示される直前にtableViewを更新
+       override func viewWillAppear(_ animated: Bool) {
+            super.viewWillAppear(animated)
+            tableview.reloadData()
+       }
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -72,23 +87,32 @@ class MemberListViewController: UIViewController,UITableViewDelegate,UITableView
         memberdata.Member = name
         memberdata.Color = colorNum
         
-        self.memberArray.append(memberdata)
+       // self.memberArray.append(memberdata)
         self.members.removeAll()
         self.tableview.reloadData()
         
-    
+        
+        do{
+            let realm = try Realm()
+            try realm.write({ () -> Void in
+            realm.add(memberdata)
+        })
+        }catch{
+        }
+        
+    /*
         //UserDefaultsに保存
         let userDefaults = UserDefaults.standard
         let archivedData = try! NSKeyedArchiver.archivedData(withRootObject: memberArray, requiringSecureCoding: false)
         userDefaults.set(archivedData, forKey: "memberArray")
-        userDefaults.synchronize()
+        userDefaults.synchronize()*/
         
     }
     
     //メンバー(cell)の数
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        memberArray.count
+        return memberArray.count
         
     }
     
@@ -130,7 +154,7 @@ class MemberListViewController: UIViewController,UITableViewDelegate,UITableView
 
     //cellの削除機能
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        
+       /*
         memberArray.remove(at: indexPath.row)
         let indexPaths = [indexPath]
         tableView.deleteRows(at: indexPaths, with: .automatic)
@@ -139,7 +163,19 @@ class MemberListViewController: UIViewController,UITableViewDelegate,UITableView
         let userDefaults = UserDefaults.standard
         let archivedData = try! NSKeyedArchiver.archivedData(withRootObject: memberArray, requiringSecureCoding: false)
         userDefaults.set(archivedData, forKey: "memberArray")
-        userDefaults.synchronize()
+        userDefaults.synchronize()*/
+        
+        if(editingStyle == UITableViewCell.EditingStyle.delete) {
+                   // Realm内のデータを削除
+                   do{
+                       let realm = try Realm()
+                       try realm.write {
+                           realm.delete(self.memberArray[indexPath.row])
+                       }
+                       tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.fade)
+                   }catch{
+                   }
+               }
         
        }
     

@@ -24,7 +24,11 @@ class CollectPhotoViewController: UIViewController {
         
     }
     
-
+    
+    @IBAction func EditList(_ sender: Any) {
+         performSegue(withIdentifier: "Selectsegue", sender: nil)
+    }
+    
     /*
     // MARK: - Navigation
 
