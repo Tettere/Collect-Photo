@@ -36,6 +36,7 @@ class SelectMemberViewController: UIViewController,UITableViewDelegate,UITableVi
         tableview.dataSource = self
         tableview.allowsMultipleSelectionDuringEditing = true
         
+        
         //「メンバーリスト」からcell情報を取得
         do{
             let realm = try Realm()
@@ -71,6 +72,7 @@ class SelectMemberViewController: UIViewController,UITableViewDelegate,UITableVi
     }
        
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "MemberCell", for: indexPath)
         let item = memberArray[indexPath.row].Member
                   
@@ -79,9 +81,9 @@ class SelectMemberViewController: UIViewController,UITableViewDelegate,UITableVi
         membersLabel = cell.contentView.viewWithTag(8) as! UILabel
         membersLabel.text = item
         
+        
         //セルの選択時の背景色を消す
         cell.selectionStyle = UITableViewCell.SelectionStyle.none
-        
         
         switch memberArray[indexPath.row].Color {
                       
@@ -150,6 +152,7 @@ class SelectMemberViewController: UIViewController,UITableViewDelegate,UITableVi
             }else{
                 return false
             }})
+            
         //行番号の配列を上書き
         rowListArray = listNumber
             
