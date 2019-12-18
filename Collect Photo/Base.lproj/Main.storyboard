@@ -691,7 +691,13 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="POA-z7-HQ0"/>
                     </view>
-                    <navigationItem key="navigationItem" title="リスト編集" id="IWw-hr-2Y3"/>
+                    <navigationItem key="navigationItem" title="リスト編集" id="IWw-hr-2Y3">
+                        <barButtonItem key="rightBarButtonItem" title="完了" id="Qfn-jD-aRb">
+                            <connections>
+                                <action selector="Finish:" destination="nVf-hE-NJ8" id="THe-rI-HXA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="tableview" destination="TAn-92-cGS" id="Bzo-sk-jJV"/>
                     </connections>

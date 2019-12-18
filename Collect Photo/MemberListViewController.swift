@@ -25,10 +25,21 @@ class MemberListViewController: UIViewController,UITableViewDelegate,UITableView
     var colorLabel = UILabel()
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
       
         tableview.delegate = self
         tableview.dataSource = self
+        
+        
+        do{
+            
+            let realm = try Realm()
+            memberArray = realm.objects(MemberData.self)
+            
+            }catch{
+                
+        }
       /*
         //保存しているリストの読み込み処理
         let userDefaults = UserDefaults.standard
@@ -41,24 +52,20 @@ class MemberListViewController: UIViewController,UITableViewDelegate,UITableView
  
         }*/
         
-        do{
-            let realm = try Realm()
-            memberArray = realm.objects(MemberData.self)
-            }catch{
-        }
         
     }
     
     // 画面が表示される直前にtableViewを更新
-       override func viewWillAppear(_ animated: Bool) {
-            super.viewWillAppear(animated)
-            tableview.reloadData()
-       }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableview.reloadData()
+    }
 
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if let NextVC = segue.destination as? InputMemberViewController {
+            
             NextVC.delegate = self
             
        }
@@ -68,13 +75,13 @@ class MemberListViewController: UIViewController,UITableViewDelegate,UITableView
     //メンバーの名前受け取り
     func sendText1(text1: String) {
         
-            members = text1
+        members = text1
         
     }
     //グループ分け用の色受け取り
     func sendColor(color: Int){
         
-            colorNumber = color
+        colorNumber = color
         
     }
     //データの受け取り＆保存
@@ -90,7 +97,6 @@ class MemberListViewController: UIViewController,UITableViewDelegate,UITableView
        // self.memberArray.append(memberdata)
         self.members.removeAll()
         self.tableview.reloadData()
-        
         
         do{
             let realm = try Realm()
@@ -167,16 +173,16 @@ class MemberListViewController: UIViewController,UITableViewDelegate,UITableView
         
         if(editingStyle == UITableViewCell.EditingStyle.delete) {
                    // Realm内のデータを削除
-                   do{
-                       let realm = try Realm()
-                       try realm.write {
-                           realm.delete(self.memberArray[indexPath.row])
-                       }
-                       tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.fade)
-                   }catch{
-                   }
-               }
+            do{
+                let realm = try Realm()
+                try realm.write {
+                    realm.delete(self.memberArray[indexPath.row])
+                }
+                tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.fade)
+                }catch{
+                }
+            }
         
-       }
+    }
     
 }
