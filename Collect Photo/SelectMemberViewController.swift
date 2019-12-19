@@ -43,6 +43,9 @@ class SelectMemberViewController: UIViewController,UITableViewDelegate,UITableVi
             memberArray = realm.objects(MemberData.self)
             }catch{
         }
+        /*
+        self.tableview.reloadData()
+ */
         
         /*
         //保存しているリストの読み込み処理
@@ -116,7 +119,7 @@ class SelectMemberViewController: UIViewController,UITableViewDelegate,UITableVi
             //前回チェックマークをつけたセルの行番号をUDから取得
             let storedData = UserDefaults.standard.object(forKey: "rowListArray")! as! [Int]
             //print(storedData)
-            //チェックマークをcellを生成すると同時に付け直す（本来（前回）は付いていたから）
+            //cellを生成すると同時にチェックマークを付け直す（本来（前回）は付いていたから）
             for storedData in storedData {
                 if indexPath.row == storedData {
                     //チェック入れる
@@ -157,9 +160,12 @@ class SelectMemberViewController: UIViewController,UITableViewDelegate,UITableVi
         rowListArray = listNumber
             
         }
+        /*
+        //選択状態を解除
+        tableview.deselectRow(at: indexPath, animated: true)
+ */
         
     }
-    
     //完了ボタンが押されたら
     @IBAction func Finish(_ sender: Any) {
         
@@ -170,6 +176,7 @@ class SelectMemberViewController: UIViewController,UITableViewDelegate,UITableVi
         userDefaults.synchronize()
       //print(rowListArray)
         self.navigationController?.popViewController(animated: true)
+        
         
     }
     
