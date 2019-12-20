@@ -26,15 +26,16 @@ class CollectPhotoViewController: UIViewController {
         
     }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+           if segue.identifier == "Selectsegue" {
+               let next3VC = segue.destination as! SelectMemberViewController
+                next3VC.number = number
+           }
+       }
     @IBAction func EditList(_ sender: Any) {
-        /*
-         let next3VC = storyboard?.instantiateViewController(withIdentifier: "Selectsegue") as! SelectMemberViewController
-         next3VC.number = number
- */
-         performSegue(withIdentifier: "Selectsegue", sender: nil)
         
-         
+         performSegue(withIdentifier: "Selectsegue", sender:number)
+        
     }
     
     /*

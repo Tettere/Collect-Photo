@@ -136,8 +136,8 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let next2VC = storyboard?.instantiateViewController(withIdentifier: "collectphotosegue") as! CollectPhotoViewController
-        
         next2VC.name = collectionlist[indexPath.row].Title
+        print(indexPath.row)
         //print(next2VC.name)
         next2VC.number = indexPath.row
         navigationController?.pushViewController(next2VC, animated: true)
