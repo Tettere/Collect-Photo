@@ -139,6 +139,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         next2VC.name = collectionlist[indexPath.row].Title
         //print(next2VC.name)
+        next2VC.number = indexPath.row
         navigationController?.pushViewController(next2VC, animated: true)
            
        }

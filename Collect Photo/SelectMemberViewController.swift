@@ -13,6 +13,7 @@ class SelectMemberViewController: UIViewController,UITableViewDelegate,UITableVi
     
     var memberArray:Results<MemberData>!
     
+    var number = Int()
     //チェックマークが付いたセルの行番号を格納する配列
     var rowListArray = [Int]()
     
@@ -115,12 +116,17 @@ class SelectMemberViewController: UIViewController,UITableViewDelegate,UITableVi
         
         
        //UDに何か保存されている時だけ呼ばれる。つまり最初は絶対に呼ばれない。
-        if UserDefaults.standard.object(forKey: "rowListArray") != nil{
+        /*
+        if UserDefaults.standard.object(forKey: "rowListArray\(number)") != nil{
+ */
+         if UserDefaults.standard.object(forKey: "rowListArray") != nil{
             //前回チェックマークをつけたセルの行番号をUDから取得
+            //let storedData = UserDefaults.standard.object(forKey: "rowListArray\(number)")! as! [Int]
             let storedData = UserDefaults.standard.object(forKey: "rowListArray")! as! [Int]
             //print(storedData)
             //cellを生成すると同時にチェックマークを付け直す（本来（前回）は付いていたから）
             for storedData in storedData {
+                
                 if indexPath.row == storedData {
                     //チェック入れる
                     cell.accessoryType = .checkmark
@@ -172,6 +178,10 @@ class SelectMemberViewController: UIViewController,UITableViewDelegate,UITableVi
         //チェックマークが付いているセルの行番号を配列にまとめてUDに保存。そして前画面に戻る。
         let userDefaults = UserDefaults.standard
       //let archivedData = try! NSKeyedArchiver.archivedData(withRootObject: rowListArray, requiringSecureCoding: false)
+        /*
+        userDefaults.set(rowListArray, forKey: "rowListArray\(number)")
+        print(number)
+ */
         userDefaults.set(rowListArray, forKey: "rowListArray")
         userDefaults.synchronize()
       //print(rowListArray)

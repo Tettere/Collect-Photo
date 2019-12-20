@@ -12,6 +12,8 @@ class CollectPhotoViewController: UIViewController {
 
     var name = String()
     
+    var number = Int()
+    
     
     @IBOutlet weak var navi: UINavigationItem!
     
@@ -26,7 +28,13 @@ class CollectPhotoViewController: UIViewController {
     
     
     @IBAction func EditList(_ sender: Any) {
+        /*
+         let next3VC = storyboard?.instantiateViewController(withIdentifier: "Selectsegue") as! SelectMemberViewController
+         next3VC.number = number
+ */
          performSegue(withIdentifier: "Selectsegue", sender: nil)
+        
+         
     }
     
     /*

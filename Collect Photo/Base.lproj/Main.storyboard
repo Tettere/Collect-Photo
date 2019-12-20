@@ -641,7 +641,7 @@
         <!--リスト編集-->
         <scene sceneID="Kzy-Yx-DcE">
             <objects>
-                <viewController id="nVf-hE-NJ8" customClass="SelectMemberViewController" customModule="Collect_Photo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Selectsegue" id="nVf-hE-NJ8" customClass="SelectMemberViewController" customModule="Collect_Photo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YmZ-jr-xuy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
