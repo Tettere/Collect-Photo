@@ -42,6 +42,8 @@ class MemberData: Object {
     @objc dynamic var Member:String = ""
     // 数量
     @objc dynamic var Color:Int = 0
+    
+    @objc dynamic var Order:Int = 0
 }
    
 

@@ -24,6 +24,9 @@ class MemberListViewController: UIViewController,UITableViewDelegate,UITableView
     var colorNumber:Int = 0
     var colorLabel = UILabel()
     
+    //order変数
+    var orderNumber:Int = 0
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -35,8 +38,8 @@ class MemberListViewController: UIViewController,UITableViewDelegate,UITableView
         do{
             
             let realm = try Realm()
-            memberArray = realm.objects(MemberData.self)
-            
+            memberArray = realm.objects(MemberData.self).sorted(byKeyPath: "Order", ascending: true)
+            print(memberArray!)
             }catch{
                 
         }
@@ -84,15 +87,24 @@ class MemberListViewController: UIViewController,UITableViewDelegate,UITableView
         colorNumber = color
         
     }
+    //何番目か
+    func order(oderInt: Int){
+        
+        orderNumber = oderInt
+        
+    }
     //データの受け取り＆保存
     func GetMember(){
         
         let name = members
         let colorNum = colorNumber
+        let orderNum = orderNumber
         let memberdata = MemberData()
+        
                
         memberdata.Member = name
         memberdata.Color = colorNum
+        memberdata.Order = orderNum
         
        // self.memberArray.append(memberdata)
         self.members.removeAll()
@@ -181,7 +193,9 @@ class MemberListViewController: UIViewController,UITableViewDelegate,UITableView
                 tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.fade)
                 }catch{
                 }
+            
             }
+        print(memberArray!)
         
     }
     

@@ -41,7 +41,7 @@ class SelectMemberViewController: UIViewController,UITableViewDelegate,UITableVi
         //「メンバーリスト」からcell情報を取得
         do{
             let realm = try Realm()
-            memberArray = realm.objects(MemberData.self)
+            memberArray = realm.objects(MemberData.self).sorted(byKeyPath: "Order", ascending: true)
             }catch{
         }
         /*

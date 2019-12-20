@@ -13,7 +13,9 @@ protocol GetMemberprotocol {
     
     func sendText1(text1: String)
     func sendColor(color: Int)
+    func order(oderInt: Int)
     func GetMember()
+    
     
 }
 
@@ -25,6 +27,8 @@ class InputMemberViewController: UIViewController,UITextFieldDelegate {
     var BtnColor:Int = 0
     
     var delegate: GetMemberprotocol?
+    
+    var i:Int = 0
     
     override func viewDidLoad() {
         
@@ -44,10 +48,21 @@ class InputMemberViewController: UIViewController,UITextFieldDelegate {
     
    //完了ボタン押すとcellが構築されて戻る
     @IBAction func AddMember(_ sender: Any) {
-        
+        //毎回変数＋１になる。これによって削除されたCell関係なしに昇順でソートするからじメンバーリストの順番がおかしくなることはない
+        if UserDefaults.standard.object(forKey: "order") != nil{
+            let storedData = UserDefaults.standard.object(forKey: "order")! as! Int
+            i = storedData
+        }
+        i = i + 1
+        print(i)
         delegate?.sendText1(text1: TextField.text!)
         delegate?.sendColor(color: BtnColor)
+        delegate?.order(oderInt: i)
         delegate?.GetMember()
+        
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(i, forKey: "order")
+        userDefaults.synchronize()
         self.navigationController?.popViewController(animated: true)
         
     }
