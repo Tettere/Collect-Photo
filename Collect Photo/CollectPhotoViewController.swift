@@ -14,6 +14,7 @@ class CollectPhotoViewController: UIViewController {
     
     var number = Int()
     
+    var count = Int()
     
     @IBOutlet weak var navi: UINavigationItem!
     

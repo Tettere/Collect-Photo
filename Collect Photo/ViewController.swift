@@ -10,6 +10,8 @@ import UIKit
 
 class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout,GetDataprotocol {
    
+    
+   
     private let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
     //タイトル入力
     var titles:String = ""
@@ -18,6 +20,16 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     //日付入力
     var dates:String = ""
     var dateLabel = UILabel()
+    
+    //種類格納用
+    var cut1Name:String = ""
+    var cut2Name:String = ""
+    var cut3Name:String = ""
+    var cut4Name:String = ""
+    var cut5Name:String = ""
+    var cut6Name:String = ""
+    
+    var cutCouts:Int = 0
     
     //cellを格納
     var collectionlist = [CellData]()
@@ -89,18 +101,64 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         dates = text2
         
     }
+    
+    func cutText1(cutcount: Int, cut1: String) {
+        cutCouts = cutcount
+        cut1Name = cut1
+    }
+    
+    func cutText2(cutcount: Int, cut1: String, cut2: String) {
+        cutCouts = cutcount
+        cut1Name = cut1
+        cut2Name = cut2
+    }
+    
+    func cutText3(cutcount: Int, cut1: String, cut2: String, cut3: String) {
+        cutCouts = cutcount
+        cut1Name = cut1
+        cut2Name = cut2
+        cut3Name = cut3
+    }
 
+    func cutText4(cutcount: Int, cut1: String, cut2: String, cut3: String, cut4: String) {
+        cutCouts = cutcount
+        cut1Name = cut1
+        cut2Name = cut2
+        cut3Name = cut3
+        cut4Name = cut4
+    }
+    
+    func cutText5(cutcount: Int, cut1: String, cut2: String, cut3: String, cut4: String, cut5: String) {
+        cutCouts = cutcount
+        cut1Name = cut1
+        cut2Name = cut2
+        cut3Name = cut3
+        cut4Name = cut4
+        cut5Name = cut5
+    }
+    
+    func cutText6(cutcount: Int, cut1: String, cut2: String, cut3: String, cut4: String, cut5: String, cut6: String) {
+        cutCouts = cutcount
+        cut1Name = cut1
+        cut2Name = cut2
+        cut3Name = cut3
+        cut4Name = cut4
+        cut5Name = cut5
+        cut6Name = cut6
+    }
     //データ受信
     func GetData(){
         
         let name = titles
         let date = dates
+        let cutCount = cutCouts
         let celldata = CellData()
         
         celldata.Date = date
         celldata.Title = name
-        self.collectionlist.append(celldata)
+        celldata.CutCount = cutCount
         
+        self.collectionlist.append(celldata)
         self.titles.removeAll()
         self.dates.removeAll()
         
@@ -131,20 +189,20 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         return 10.0
         
     }
- //
+    
     //cellが押された時の処理
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let next2VC = storyboard?.instantiateViewController(withIdentifier: "collectphotosegue") as! CollectPhotoViewController
         next2VC.name = collectionlist[indexPath.row].Title
-        //print(indexPath.row)
-        //print(next2VC.name)
         next2VC.number = indexPath.row
+        next2VC.count = collectionlist[indexPath.row].CutCount
         navigationController?.pushViewController(next2VC, animated: true)
            
        }
  
 }
 
-
+//月日ファイル名でRealmに保存←collectionviewのセル
+//年月日ファイル名でRealmに保存←collectphotoviewのリスト
 

@@ -34,14 +34,11 @@ class MemberListViewController: UIViewController,UITableViewDelegate,UITableView
         tableview.delegate = self
         tableview.dataSource = self
         
-        
         do{
-            
             let realm = try Realm()
             memberArray = realm.objects(MemberData.self).sorted(byKeyPath: "Order", ascending: true)
-            print(memberArray!)
-            }catch{
-                
+        }catch{
+            
         }
       /*
         //保存しているリストの読み込み処理
@@ -106,7 +103,7 @@ class MemberListViewController: UIViewController,UITableViewDelegate,UITableView
         memberdata.Color = colorNum
         memberdata.Order = orderNum
         
-       // self.memberArray.append(memberdata)
+        //self.memberArray.append(memberdata)
         self.members.removeAll()
         self.tableview.reloadData()
         
@@ -148,7 +145,7 @@ class MemberListViewController: UIViewController,UITableViewDelegate,UITableView
         membersLabel.text = item
         
         switch memberArray[indexPath.row].Color {
-            
+        
         case 1:
             colorLabel.backgroundColor = .red
         case 2:
