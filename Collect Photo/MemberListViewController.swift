@@ -38,7 +38,6 @@ class MemberListViewController: UIViewController,UITableViewDelegate,UITableView
             let realm = try Realm()
             memberArray = realm.objects(MemberData.self).sorted(byKeyPath: "Order", ascending: true)
         }catch{
-            
         }
       /*
         //保存しているリストの読み込み処理

@@ -13,5 +13,6 @@ class CellData{
     var Date:String = ""
     var Title:String = ""
     var CutCount:Int = 0
+    
    
 }

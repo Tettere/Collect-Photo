@@ -96,24 +96,18 @@ class CutListViewController: UIViewController,UITableViewDelegate,UITableViewDat
       
      //アイテム削除機能
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        /*
-        cutArray.remove(at: indexPath.row)
-        let indexPaths = [indexPath]
-        tableView.deleteRows(at: indexPaths, with: .automatic)
-        self.tableView.reloadData()
-        */
         if(editingStyle == UITableViewCell.EditingStyle.delete) {
                           // Realm内のデータを削除
-            do{
-                let realm = try Realm()
-                let result = realm.objects(CutData.self).filter("Cut == '\(cutArray1[indexPath.row])'")
-                try realm.write {
-                    realm.delete(result)
-                }
-                cutArray1.remove(at: indexPath.row)
-                tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.fade)
-                }catch{
-                }
+        do{
+            let realm = try Realm()
+            let result = realm.objects(CutData.self).filter("Cut == '\(cutArray1[indexPath.row])'")
+            try realm.write {
+                realm.delete(result)
+            }
+            cutArray1.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: UITableView.RowAnimation.fade)
+            }catch{
+            }
         }
        
         

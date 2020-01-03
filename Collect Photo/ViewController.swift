@@ -7,10 +7,10 @@
 //
 
 import UIKit
+import RealmSwift
 
 class ViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout,GetDataprotocol {
    
-    
    
     private let sectionInsets = UIEdgeInsets(top: 10.0, left: 10.0, bottom: 10.0, right: 10.0)
     //タイトル入力
@@ -45,6 +45,12 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        /*
+        do{
+            let realm = try Realm()
+            memberArray = realm.objects(MemberData.self).sorted(byKeyPath: "Order", ascending: true)
+        }catch{
+        }*/
         collectionview.delegate = self
         collectionview.dataSource = self
     }
@@ -74,10 +80,10 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
-        if segue.identifier == "inputsegue" {
+        if(segue.identifier == "inputsegue"){
             let nextVC = segue.destination as? inputViewController
                 nextVC!.delegate = self
-        }else if segue.identifier == "collectphotosegue"{
+        }else if(segue.identifier == "collectphotosegue"){
             
         }
     }
@@ -97,29 +103,31 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     //日付受け取り
     func sendText2(text2: String) {
-        
         dates = text2
-        
     }
     
+    //種類が1つなら
     func cutText1(cutcount: Int, cut1: String) {
         cutCouts = cutcount
         cut1Name = cut1
     }
     
+    //種類が2つなら
     func cutText2(cutcount: Int, cut1: String, cut2: String) {
         cutCouts = cutcount
         cut1Name = cut1
         cut2Name = cut2
     }
     
+   //種類が３つなら
     func cutText3(cutcount: Int, cut1: String, cut2: String, cut3: String) {
         cutCouts = cutcount
         cut1Name = cut1
         cut2Name = cut2
         cut3Name = cut3
     }
-
+    
+    //種類が４つなら
     func cutText4(cutcount: Int, cut1: String, cut2: String, cut3: String, cut4: String) {
         cutCouts = cutcount
         cut1Name = cut1
@@ -128,6 +136,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         cut4Name = cut4
     }
     
+    //種類が５つなら
     func cutText5(cutcount: Int, cut1: String, cut2: String, cut3: String, cut4: String, cut5: String) {
         cutCouts = cutcount
         cut1Name = cut1
@@ -137,6 +146,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         cut5Name = cut5
     }
     
+    //種類が６つなら
     func cutText6(cutcount: Int, cut1: String, cut2: String, cut3: String, cut4: String, cut5: String, cut6: String) {
         cutCouts = cutcount
         cut1Name = cut1
@@ -146,6 +156,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
         cut5Name = cut5
         cut6Name = cut6
     }
+    
     //データ受信
     func GetData(){
         
@@ -177,7 +188,7 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     }
     
     //セルのLayout
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,    insetForSectionAt section: Int) -> UIEdgeInsets {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         
         return sectionInsets
         
@@ -192,15 +203,15 @@ class ViewController: UIViewController, UICollectionViewDataSource, UICollection
     
     //cellが押された時の処理
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
         let next2VC = storyboard?.instantiateViewController(withIdentifier: "collectphotosegue") as! CollectPhotoViewController
         next2VC.name = collectionlist[indexPath.row].Title
         next2VC.number = indexPath.row
         next2VC.count = collectionlist[indexPath.row].CutCount
         navigationController?.pushViewController(next2VC, animated: true)
-           
        }
- 
+
+    
+    
 }
 
 //月日ファイル名でRealmに保存←collectionviewのセル

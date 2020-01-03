@@ -36,17 +36,16 @@ class inputViewController: UIViewController,UITextFieldDelegate, UIPickerViewDel
     @IBOutlet weak var Cut5Field: UITextField!
     @IBOutlet weak var Cut6Field: UITextField!
     
+    //種類用picker
     var cutpickerView: UIPickerView = UIPickerView()
-    //UIDatePickerを定義するための変数
+    //日付用picker
     var datePicker: UIDatePicker = UIDatePicker()
+    //種類取得用
+    var cutArray = [String]()
+    //textFieldのtag管理
+    var cutTextFieldTag = Int()
     
     var delegate: GetDataprotocol?
-
-    var cutArray = [String]()
-    
-    var curTextFieldTag = Int()
-    
-    
     
     override func viewDidLoad() {
         
@@ -57,37 +56,36 @@ class inputViewController: UIViewController,UITextFieldDelegate, UIPickerViewDel
             cutArray = realm.objects(CutData.self).value(forKey: "Cut") as! [String]
         }catch{
         }
-        
+        //種類の入力を強制させないようにする
         cutArray.insert("", at: 0)
         
         datePicker.datePickerMode = UIDatePicker.Mode.date
         datePicker.timeZone = NSTimeZone.local
         datePicker.locale = Locale.current
-       // datefield.inputView = datePicker
 
         cutpickerView.delegate = self
         cutpickerView.dataSource = self
         TextField.delegate = self
         datefield.delegate = self
+        
         //cutpickerView.showsSelectionIndicator = true
-        // 決定バーの生成
+        //日付Picker
         let toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 35))
         let spacelItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
         toolbar.setItems([spacelItem, doneItem], animated: true)
-        
+        //種類Picker
         let cuttoolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 35))
-       // let cutcancelItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(Cancel))
+        let cutcancelItem = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(Cancel))
         let cutspacelItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         let cutdonelItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(done))
-        cuttoolbar.setItems([cutspacelItem,cutdonelItem], animated: true)
+        cuttoolbar.setItems([cutcancelItem,cutspacelItem,cutdonelItem], animated: true)
 
         // インプットビュー設定(紐づいているUITextfieldへ代入)
         datefield.inputView = datePicker
         datefield.inputAccessoryView = toolbar
         datefield.tag = 1
        
-        
         Cut1Field.inputView = cutpickerView
         Cut1Field.inputAccessoryView = cuttoolbar
         Cut1Field.tag = 2
@@ -122,18 +120,24 @@ class inputViewController: UIViewController,UITextFieldDelegate, UIPickerViewDel
         
         
     }
+//TextFieldに触れるとtagを取得
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        curTextFieldTag = textField.tag
+        cutTextFieldTag = textField.tag
     }
+    /*
+    @objc func cancel(){
+        
+    }*/
     
     @objc func done() {
-        switch curTextFieldTag {
+        switch cutTextFieldTag {
         case 1:
             self.datefield.endEditing(true)
             // 日付のフォーマット
             let formatter = DateFormatter()
             //出力の仕方
             formatter.dateFormat = "MM月dd日"
+            //formatter.dateFormat = "YYYYMMdd"
             //(from: datePicker.date))を指定してあげることで
             //datePickerで指定した日付が表示される
             datefield.text = "\(formatter.string(from: datePicker.date))"
@@ -152,42 +156,6 @@ class inputViewController: UIViewController,UITextFieldDelegate, UIPickerViewDel
         default:
             break
         }
-        /*
-        if (datefield.tag == 1){
-            self.datefield.endEditing(true)
-        // 日付のフォーマット
-            let formatter = DateFormatter()
-        //出力の仕方
-            formatter.dateFormat = "MM月dd日"
-        //(from: datePicker.date))を指定してあげることで
-        //datePickerで指定した日付が表示される
-            datefield.text = "\(formatter.string(from: datePicker.date))"
-        }else if(Cut1Field.tag == 2){
-            
-            self.Cut1Field.endEditing(true)
-            
-        }else if(Cut2Field.tag == 3){
-            
-            self.Cut2Field.endEditing(true)
-            
-        }else if(Cut3Field.tag == 4){
-            
-            self.Cut3Field.endEditing(true)
-            
-        }else if(Cut4Field.tag == 5){
-            
-            self.Cut4Field.endEditing(true)
-            
-        }else if(Cut5Field.tag == 6){
-            
-            self.Cut5Field.endEditing(true)
-            
-        }else if(Cut6Field.tag == 7){
-            
-            self.Cut6Field.endEditing(true)
-            
-        }
-        */
     }
     
     override func didReceiveMemoryWarning() {
@@ -232,10 +200,12 @@ class inputViewController: UIViewController,UITextFieldDelegate, UIPickerViewDel
             delegate?.cutText6(cutcount: n, cut1: Cut1Field.text!, cut2: Cut2Field.text!, cut3: Cut3Field.text!, cut4: Cut4Field.text!, cut5: Cut5Field.text!, cut6: Cut6Field.text!)
         default: break
         }
+        
         delegate?.sendText1(text1: TextField.text!)
         delegate?.sendText2(text2: datefield.text!)
         delegate?.GetData()
         
+      //  print(n)
         self.navigationController?.popToRootViewController(animated: true)
         
     }
@@ -251,7 +221,7 @@ class inputViewController: UIViewController,UITextFieldDelegate, UIPickerViewDel
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         TextField.resignFirstResponder()
-        
+
         return true
         
     }
@@ -260,16 +230,19 @@ class inputViewController: UIViewController,UITextFieldDelegate, UIPickerViewDel
            return 1
        }
        
+    
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return cutArray.count
        }
+    
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return cutArray[row]
     }
     
+    
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        switch curTextFieldTag {
+        switch cutTextFieldTag {
         case 2:
             self.Cut1Field.text = cutArray[row]
         
@@ -290,32 +263,6 @@ class inputViewController: UIViewController,UITextFieldDelegate, UIPickerViewDel
         
         default: break
         }
-     /*   if(Cut1Field.tag == 2){
-            
-            self.Cut1Field.text = cutArray[row]
-            
-        }else if(Cut2Field.tag == 3){
-            
-            self.Cut2Field.text = cutArray[row]
-            
-        }else if(Cut3Field.tag == 4){
-            
-            self.Cut3Field.text = cutArray[row]
-            
-        }else if(Cut4Field.tag == 5){
-            
-            self.Cut4Field.text = cutArray[row]
-            
-        }else if(Cut5Field.tag == 6){
-            
-            self.Cut5Field.text = cutArray[row]
-            
-        }else if(Cut6Field.tag == 7){
-            
-            self.Cut6Field.text = cutArray[row]
-            
-        }*/
     }
-    
 
 }
