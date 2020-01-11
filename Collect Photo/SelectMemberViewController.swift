@@ -16,6 +16,7 @@ class SelectMemberViewController: UIViewController,UITableViewDelegate,UITableVi
     var number = Int()
     //チェックマークが付いたセルの行番号を格納する配列
     var rowListArray = [Int]()
+    var nameListArray = [String]()
     
     //メンバー変数
     var members:String = ""
@@ -59,6 +60,7 @@ class SelectMemberViewController: UIViewController,UITableViewDelegate,UITableVi
         }
          */
     }
+    
     
     /*
     override func viewWillAppear(_ animated: Bool) {
@@ -108,11 +110,19 @@ class SelectMemberViewController: UIViewController,UITableViewDelegate,UITableVi
                       
             }
         //セルの選択状況の判定
+        
         if (rowListArray.contains(indexPath.row)){
             cell.accessoryType = .checkmark
         }else{
             cell.accessoryType = .none
         }
+        /*
+        if (nameListArray.contains(memberArray[indexPath.row].Member)){
+            cell.accessoryType = .checkmark
+        }else{
+            cell.accessoryType = .none
+        }
+    */
         
         
        //UDに何か保存されている時だけ呼ばれる。つまり最初は絶対に呼ばれない。
@@ -132,6 +142,7 @@ class SelectMemberViewController: UIViewController,UITableViewDelegate,UITableVi
                     cell.accessoryType = .checkmark
                     //チェックが入ったのでその行番号を配列に格納
                     self.rowListArray.append(indexPath.row)
+                    //self.nameListArray.append(memberArray[indexPath.row].Member)
                     //print(storedData)
                 }
             }
@@ -149,6 +160,7 @@ class SelectMemberViewController: UIViewController,UITableViewDelegate,UITableVi
         if(cell?.accessoryType == UITableViewCell.AccessoryType.none){
             cell?.accessoryType = .checkmark
             self.rowListArray.append(indexPath.row)
+            
             
         }else{
             

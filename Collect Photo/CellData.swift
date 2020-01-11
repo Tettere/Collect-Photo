@@ -7,12 +7,18 @@
 //
 
 import Foundation
+import RealmSwift
 
 class CellData{
     
-    var Date:String = ""
-    var Title:String = ""
-    var CutCount:Int = 0
-    
-   
+    @objc dynamic var Date:String = ""
+    @objc dynamic var Title:String = ""
+    @objc dynamic var CutCount:Int = 0
+    @objc dynamic var Cut1:String = ""
+    @objc dynamic var Cut2:String = ""
+    @objc dynamic var Cut3:String = ""
+    @objc dynamic var Cut4:String = ""
+    @objc dynamic var Cut5:String = ""
+    @objc dynamic var Cut6:String = ""
 }
+

@@ -11,6 +11,7 @@ import RealmSwift
 
 protocol GetMemberprotocol {
     
+    
     func sendText1(text1: String)
     func sendColor(color: Int)
     func order(oderInt: Int)
@@ -63,6 +64,7 @@ class InputMemberViewController: UIViewController,UITextFieldDelegate {
         let userDefaults = UserDefaults.standard
         userDefaults.set(i, forKey: "order")
         userDefaults.synchronize()
+        
         self.navigationController?.popViewController(animated: true)
         
     }

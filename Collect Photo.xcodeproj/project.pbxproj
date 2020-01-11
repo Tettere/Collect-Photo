@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		112B9D3C239E2A810099B2B8 /* SettingTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112B9D3B239E2A810099B2B8 /* SettingTableViewController.swift */; };
-		112B9D3E239E34B30099B2B8 /* MemberListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112B9D3D239E34B30099B2B8 /* MemberListTableViewController.swift */; };
 		112B9D4023A0A1D70099B2B8 /* InputMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112B9D3F23A0A1D70099B2B8 /* InputMemberViewController.swift */; };
 		112B9D4223A0A40B0099B2B8 /* MemberListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 112B9D4123A0A40B0099B2B8 /* MemberListViewController.swift */; };
 		114DAB6A23A628820004CCD7 /* CollectPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114DAB6923A628820004CCD7 /* CollectPhotoViewController.swift */; };
@@ -21,6 +20,9 @@
 		118F6B6C238E2BC90037369A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 118F6B6A238E2BC90037369A /* LaunchScreen.storyboard */; };
 		118F6B9423940CAB0037369A /* inputViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118F6B9323940CAB0037369A /* inputViewController.swift */; };
 		118F6B96239756890037369A /* CellData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 118F6B95239756890037369A /* CellData.swift */; };
+		11920DA523C450000075D621 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11920DA423C450000075D621 /* HomeViewController.swift */; };
+		11920DA723C707160075D621 /* ScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11920DA623C707160075D621 /* ScrollView.swift */; };
+		11920DAA23C70EFA0075D621 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11920DA923C70EFA0075D621 /* CollectionView.swift */; };
 		11B65D6F23A21BDB005B69D2 /* MemberData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B65D6E23A21BDB005B69D2 /* MemberData.swift */; };
 		11B65D7123A40265005B69D2 /* CutListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B65D7023A40265005B69D2 /* CutListViewController.swift */; };
 		11CFC17F23AF25D0005A1E79 /* Custom3TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CFC17D23AF25D0005A1E79 /* Custom3TableViewCell.swift */; };
@@ -33,7 +35,6 @@
 
 /* Begin PBXFileReference section */
 		112B9D3B239E2A810099B2B8 /* SettingTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingTableViewController.swift; sourceTree = "<group>"; };
-		112B9D3D239E34B30099B2B8 /* MemberListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberListTableViewController.swift; sourceTree = "<group>"; };
 		112B9D3F23A0A1D70099B2B8 /* InputMemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputMemberViewController.swift; sourceTree = "<group>"; };
 		112B9D4123A0A40B0099B2B8 /* MemberListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberListViewController.swift; sourceTree = "<group>"; };
 		114DAB6923A628820004CCD7 /* CollectPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectPhotoViewController.swift; sourceTree = "<group>"; };
@@ -48,6 +49,9 @@
 		118F6B6D238E2BC90037369A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		118F6B9323940CAB0037369A /* inputViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = inputViewController.swift; sourceTree = "<group>"; };
 		118F6B95239756890037369A /* CellData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellData.swift; sourceTree = "<group>"; };
+		11920DA423C450000075D621 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		11920DA623C707160075D621 /* ScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollView.swift; sourceTree = "<group>"; };
+		11920DA923C70EFA0075D621 /* CollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
 		11B65D6E23A21BDB005B69D2 /* MemberData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberData.swift; sourceTree = "<group>"; };
 		11B65D7023A40265005B69D2 /* CutListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutListViewController.swift; sourceTree = "<group>"; };
 		11CFC17D23AF25D0005A1E79 /* Custom3TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Custom3TableViewCell.swift; sourceTree = "<group>"; };
@@ -75,7 +79,7 @@
 		118F6B53238E2BC50037369A = {
 			isa = PBXGroup;
 			children = (
-				112B9D3D239E34B30099B2B8 /* MemberListTableViewController.swift */,
+				11920DA823C70E460075D621 /* 保留 */,
 				118F6B5E238E2BC50037369A /* Collect Photo */,
 				118F6B5D238E2BC50037369A /* Products */,
 				882C58448293D51273EEDF66 /* Pods */,
@@ -101,12 +105,12 @@
 				11CFC18123AF25EC005A1E79 /* Custom6TableViewCell.swift */,
 				11CFC18223AF25EC005A1E79 /* Custom6TableViewCell.xib */,
 				118F6B63238E2BC50037369A /* ViewController.swift */,
+				118F6B95239756890037369A /* CellData.swift */,
 				118F6B9323940CAB0037369A /* inputViewController.swift */,
 				114DAB6923A628820004CCD7 /* CollectPhotoViewController.swift */,
 				114DAB6B23A877F00004CCD7 /* SelectMemberViewController.swift */,
-				112B9D3B239E2A810099B2B8 /* SettingTableViewController.swift */,
-				118F6B95239756890037369A /* CellData.swift */,
 				118F6B65238E2BC50037369A /* Main.storyboard */,
+				112B9D3B239E2A810099B2B8 /* SettingTableViewController.swift */,
 				11B65D7023A40265005B69D2 /* CutListViewController.swift */,
 				112B9D4123A0A40B0099B2B8 /* MemberListViewController.swift */,
 				112B9D3F23A0A1D70099B2B8 /* InputMemberViewController.swift */,
@@ -117,6 +121,16 @@
 				118F6B6D238E2BC90037369A /* Info.plist */,
 			);
 			path = "Collect Photo";
+			sourceTree = "<group>";
+		};
+		11920DA823C70E460075D621 /* 保留 */ = {
+			isa = PBXGroup;
+			children = (
+				11920DA423C450000075D621 /* HomeViewController.swift */,
+				11920DA623C707160075D621 /* ScrollView.swift */,
+				11920DA923C70EFA0075D621 /* CollectionView.swift */,
+			);
+			path = "保留";
 			sourceTree = "<group>";
 		};
 		882C58448293D51273EEDF66 /* Pods */ = {
@@ -253,10 +267,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				11920DAA23C70EFA0075D621 /* CollectionView.swift in Sources */,
 				112B9D3C239E2A810099B2B8 /* SettingTableViewController.swift in Sources */,
 				11B65D6F23A21BDB005B69D2 /* MemberData.swift in Sources */,
 				112B9D4023A0A1D70099B2B8 /* InputMemberViewController.swift in Sources */,
-				112B9D3E239E34B30099B2B8 /* MemberListTableViewController.swift in Sources */,
+				11920DA523C450000075D621 /* HomeViewController.swift in Sources */,
 				11CFC17F23AF25D0005A1E79 /* Custom3TableViewCell.swift in Sources */,
 				118F6B64238E2BC50037369A /* ViewController.swift in Sources */,
 				118F6B60238E2BC50037369A /* AppDelegate.swift in Sources */,
@@ -269,6 +284,7 @@
 				11B65D7123A40265005B69D2 /* CutListViewController.swift in Sources */,
 				11CFC18623B2C325005A1E79 /* CutData.swift in Sources */,
 				112B9D4223A0A40B0099B2B8 /* MemberListViewController.swift in Sources */,
+				11920DA723C707160075D621 /* ScrollView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -97,7 +97,7 @@ class CutListViewController: UIViewController,UITableViewDelegate,UITableViewDat
      //アイテム削除機能
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if(editingStyle == UITableViewCell.EditingStyle.delete) {
-                          // Realm内のデータを削除
+// Realm内のデータを削除
         do{
             let realm = try Realm()
             let result = realm.objects(CutData.self).filter("Cut == '\(cutArray1[indexPath.row])'")

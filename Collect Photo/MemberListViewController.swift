@@ -114,13 +114,6 @@ class MemberListViewController: UIViewController,UITableViewDelegate,UITableView
         }catch{
         }
         
-    /*
-        //UserDefaultsに保存
-        let userDefaults = UserDefaults.standard
-        let archivedData = try! NSKeyedArchiver.archivedData(withRootObject: memberArray, requiringSecureCoding: false)
-        userDefaults.set(archivedData, forKey: "memberArray")
-        userDefaults.synchronize()*/
-        
     }
     
     //メンバー(cell)の数
@@ -162,7 +155,7 @@ class MemberListViewController: UIViewController,UITableViewDelegate,UITableView
             
         }
         
-            return cell
+        return cell
         
     }
 
